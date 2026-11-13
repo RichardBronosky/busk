@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tip Sign</title>
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖨️</text></svg>">
+<style>
+  /* Printed on paper, so always light. Type follows brand-bot. */
+  :root { --fg: #0b0d10; --muted: #5b6672; --line: #e3e8ee; --accent: #1f6feb; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #e9edf1; color: var(--fg); }
+  body {
+    font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+    padding: 1.5rem 16px;
+  }
+
+  .hint {
+    max-width: 8.5in; margin: 0 auto 1rem; text-align: center;
+    color: var(--muted); font-size: .85rem;
+  }
+  .hint button {
+    margin-left: .5rem; padding: .4rem .8rem; font: inherit; cursor: pointer;
+    color: #fff; background: var(--accent); border: 0; border-radius: 8px;
+  }
+
+  /* One US-letter sheet. */
+  .sheet {
+    width: min(100%, 8.5in);
+    aspect-ratio: 8.5 / 11;
+    margin: 0 auto;
+    padding: 6% 8%;
+    background: #fff;
+    box-shadow: 0 2px 16px #0002;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: space-between; gap: 4%;
+    text-align: center;
+  }
+
+  .msg {
+    width: 100%;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    border-radius: 8px;
+    outline: 1px dashed transparent;
+  }
+  .msg-top { font-size: clamp(1.5rem, 7vw, 3.4rem); }
+  .msg-bottom { font-size: clamp(1.1rem, 4.5vw, 2.2rem); font-weight: 600; color: var(--muted); }
+  .msg:hover, .msg:focus { outline-color: var(--accent); }
+  .msg:empty::before { content: attr(data-placeholder); color: #b8c0c8; }
+
+  .qr { width: 84%; height: auto; aspect-ratio: 1; display: block; image-rendering: pixelated; }
+
+  @page { size: letter; margin: 0; }
+  @media print {
+    html, body { background: #fff; padding: 0; }
+    .hint { display: none; }
+    .sheet { width: 8.5in; height: 11in; box-shadow: none; padding: .6in .7in; }
+    .msg-top { font-size: 54pt; }
+    .msg-bottom { font-size: 32pt; }
+    .msg:empty::before { content: none; }
+    .msg { outline: none; }
+  }
+</style>
+</head>
+<body>
+<p class="hint">Click the text above and below the code to edit it, then
+  <button type="button" onclick="print()">Print</button></p>
+
+<div class="sheet">
+  <h1 class="msg msg-top" contenteditable="plaintext-only" spellcheck="false"
+      data-key="top" data-placeholder="Message above">Enjoying the show?</h1>
+  <img class="qr" src="qr/main.svg" alt="QR code for bronosky.com/busk" width="330" height="330">
+  <p class="msg msg-bottom" contenteditable="plaintext-only" spellcheck="false"
+     data-key="bottom" data-placeholder="Message below">Scan to tip with Venmo or Cash&nbsp;App</p>
+</div>
+
+<script>
+  // ?top=...&bottom=... sets the messages, so a sign can be bookmarked.
+  // Edits are written back into the URL as you type.
+  const params = new URLSearchParams(location.search);
+  for (const el of document.querySelectorAll(".msg")) {
+    const v = params.get(el.dataset.key);
+    if (v !== null) el.textContent = v;
+    el.addEventListener("input", () => {
+      params.set(el.dataset.key, el.textContent);
+      history.replaceState(null, "", "?" + params);
+    });
+  }
+</script>
+</body>
+</html>
