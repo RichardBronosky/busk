@@ -1,0 +1,6 @@
+# GitHub Pages renders *.md (e.g. RECIPE.md -> RECIPE.html) with _layouts/default.html.
+# index.html and print.html have no front matter, so they are served as-is.
+exclude:
+  - README.md
+  - app-cash.png
+  - app-venmo.pdf

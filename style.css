@@ -104,6 +104,45 @@ header { text-align: center; margin-bottom: 1.25rem; }
   image-rendering: pixelated;
 }
 
+/* ---- link list (from brand-bot) ---- */
+.section {
+  margin: 2rem 0 .35rem;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.section + .links { margin-top: .85rem; }
+.links { display: grid; gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.link {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  padding: .95rem 1.1rem;
+  background: var(--card);
+  color: inherit;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+.link:hover { border-color: var(--accent); }
+.link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.link .ico { font-size: 1.25rem; flex: none; }
+.link .txt { display: flex; flex-direction: column; min-width: 0; }
+.link .lbl { font-weight: 600; font-size: .95rem; }
+.link .sub {
+  color: var(--muted); font-size: .82rem;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* ---- markdown pages (Jekyll _layouts/default.html) ---- */
+.back { display: inline-block; margin-bottom: 1rem; color: var(--muted); font-size: .9rem; text-decoration: none; }
+.back:hover { color: var(--fg); }
+.doc { padding: 1.25rem 1.4rem; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.doc h1 { margin: 0 0 .5rem; font-size: clamp(1.5rem, 6vw, 1.9rem); letter-spacing: -0.02em; line-height: 1.2; }
+.doc h1 + p { margin-top: 0; color: var(--muted); }
+.doc li { margin: .3rem 0; }
+.doc a { color: var(--accent); }
+
 footer {
   margin-top: 1.75rem;
   text-align: center; color: var(--muted); font-size: .78rem;
