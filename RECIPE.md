@@ -5,7 +5,7 @@ Giant bubbles from dish soap and Polyethylene Oxide
 Per gallon:
 
 - water
-  - 3500 ml water
+  - 3500 ml (1 gallon - 1 cup)
 - Dawn Platinum
   - 130 g (about 1/2 cup)
 - J-Lube (PEO polymer powder, a veterinary/obstetrical lubricant)
@@ -15,8 +15,8 @@ Per gallon:
 
 Steps:
 
-- Make the J-Lube paste in a cup
-- Stir in the Dawn
-- Hand wash cup into final vessel containing water
-- Stir in the cream of tartar
-- Let it rest overnight
+1. Make the J-Lube paste in a cup
+1. Stir in the Dawn
+1. Hand wash cup into final vessel containing water
+1. Stir in the cream of tartar
+1. Let it rest overnight
